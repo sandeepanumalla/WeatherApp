@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 function DisplayWeather(props) {
     console.log("props",props);
-   const d = new Date()
+    console.log("props",props.data.cod );
+/*  if(props.data.cod != 404) {
+      const d = new Date()
 let localTime = d.getTime()
 let localOffset = d.getTimezoneOffset() * 60000
 let utc = localTime + localOffset
@@ -15,12 +17,15 @@ var timestr = date.toLocaleTimeString();
 console.log(date,timestr)
 console.log("nd",nd)
     console.log("props",new Date(props.data.dt*1000 -(props.data.timezone*1000) ).toLocaleTimeString());
-
+} */
     return (
-        <div>
-        <div className="main-card">
+        <div className="display">
+        {
+            props.data.cod != 404 ?
+            <Fragment> 
+            <div className="main-card">
             <h5>{props.data.name+", "}{props.data.sys.country+" Weather"}</h5>
-            <p>{" "+ new Date(city).toLocaleTimeString()}</p>
+            <p>{" "+ new Date((new Date().getTime()+new Date().getTimezoneOffset() * 60000)+(1000*props.data.timezone)).toLocaleTimeString()}</p>
             
             <h4>{Math.floor(props.data.main.temp-273.15 )}<sup>o</sup></h4>
             <span>
@@ -34,7 +39,7 @@ console.log("nd",nd)
         <table>
         <tr className='df'>
         <td><h4>High/Low </h4></td>
-        <td><span>{Math.floor(props.data.main.temp_max - 273.15)} / {Math.floor(props.data.main.temp_min - 273.15)}</span></td>
+        <td className="sa"><span>{Math.floor(props.data.main.temp_max - 273.15)}<sup>o</sup> / {Math.floor(props.data.main.temp_min - 273.15)}</span></td>
         </tr>
         <tr>
         <td><h4>Humidity </h4></td>
@@ -71,6 +76,13 @@ console.log("nd",nd)
         </table>
         </div>
         </div>
+        </Fragment>
+        :
+        <div className="main-card">
+        <h2>City not found</h2>
+        </div>
+    
+    }
         </div>
     )
 }

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -18,10 +19,15 @@ code {
   width: 70%;
   margin-left: 15%;
   border-radius: 12px;
+  background-color: rgba(213, 229, 248, 0.671);
   
 }
+
+td.sa{
+  padding-right: 10px;
+}
 .details{
-  text-align: center;
+
   margin-left: 24%;
   display: flex;
   
@@ -30,10 +36,19 @@ code {
   text-align: center;
   padding: 2%;
 }
+.city-input{
+  margin-right: 5%;
+}
 
+.city-label, .country-label{
+  margin-right: 1%;
+}
 .form{
   padding-top: 2%;
   padding-bottom: 2%;
+}
+.search{
+  margin-right: 5%;
 }
 .column-1{
   padding-right: 15%;
@@ -41,5 +56,5 @@ code {
 
 td{
   border-bottom: 2px dashed grey;
-  padding-right: 20%;
+  padding-right: 10%;
 }
